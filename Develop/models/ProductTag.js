@@ -7,6 +7,9 @@ class ProductTag extends Model {}
 ProductTag.init(
   {
     // define columns
+    //id int no nulls, primary key and auto inc
+    //product_id integer refgerences Product JS model ID
+    //tag_id is an int, references the TAG js model id
   },
   {
     sequelize,
