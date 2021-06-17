@@ -47,7 +47,13 @@ router.get('/:id', (req, res) => {
         as: 'tags'
        }
     ]
-      }).then(dbProduct => res.json(dbProduct))
+      }).then(dbProduct => {
+        if (!dbProduct) {
+          res.status(404).json({ message: 'No category found with this id' });
+          return;
+        }
+        res.json(dbCategory);
+      })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
