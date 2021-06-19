@@ -8,7 +8,7 @@ Category.init(
   {
     // define columns
     //needs ID, INT, no NULLs, SET PRIMARY KEY, AUTO-INC, CATEGORY_NAME is a string no nulls
-    id : {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,

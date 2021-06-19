@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
        { 
         model: Tag,
         attributes: ['id', 'tag_name'],
-        through: ProductTag,
-        as: 'tags'
+        // through: ProductTag,
+        // as: 'tags'
        }
     ]
   }).then(dbProduct => res.json(dbProduct))
@@ -43,8 +43,8 @@ router.get('/:id', (req, res) => {
        { 
         model: Tag,
         attributes: ['tag_name'],
-        through: ProductTag,
-        as: 'tags'
+        // through: ProductTag,
+        // as: 'tags'
        }
     ]
       }).then(dbProduct => {
@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
           res.status(404).json({ message: 'No category found with this id' });
           return;
         }
-        res.json(dbCategory);
+        res.json(dbProduct);
       })
       .catch(err => {
         console.log(err);
@@ -83,9 +83,9 @@ router.post('/', (req, res) => {
         return ProductTag.bulkCreate(productTagIdArr);
       }
       // if no product tags, just respond
-      res.status(200).json(product);
+      res.status(200).json(dbProduct);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
+    .then((dbProduct) => res.status(200).json(dbProduct))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
